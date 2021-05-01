@@ -24,16 +24,17 @@ if values[0] == 'LOTOMANIA':
 if values[0] == 'DIA DE SORTE':
     opção, init, fim, qdezInit, qdezFim  =  'DIA DE SORTE', 1, 30, 7, 15
 
-Meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',
-             'Novembro', 'Dezembro']
+Meses = ('JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'Maio'.upper(),
+         'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO',
+             'Novembro'.upper(), 'Dezembro'.upper())
 mesecolhido = choice(Meses) # escolhe um mês dentre os meses da lista "Meses".
 #window.close()
 
 sg.theme('DarkTeal9')    #DarkAmber
 layout = [[sg.Text(f' Muito bem! Você escolheu:\n\n =================== {opção} =====================\n')],
-          [sg.Text(f'Escolha dezenas entre {init} e {fim}')],
-          [sg.Text(f'Quantas dezenas quer Jogar? Entre {qdezInit} e {qdezFim} ')],
-          [sg.Text('Escolha qtde de Dezenas'), sg.InputOptionMenu(range(qdezInit,qdezFim+1))],
+          [sg.Text(f'======= Esta Loteria opera com dezenas entre {init} e {fim} =======')],
+          [sg.Text(f'Para esta Loteria Você pode fazer bilhetes de {qdezInit} até {qdezFim} dezenas ')],
+          [sg.Text('Escolha aqui a qtde de Dezenas que Você quer Jogar ==> '), sg.InputOptionMenu(range(qdezInit,qdezFim+1))],
           [sg.Button('Gerar Bilhete'), sg.Button('Sair')]]
 
 window = sg.Window('Números da Sorte - Jogos da CEF', layout)
@@ -44,7 +45,7 @@ while True:
 num = int(values[0])
 dezenas = sorted(sample(range(init, fim), num))
 if opção == 'DIA DE SORTE':
-    opa = [sg.Text(f'MÊS SORTEADO ==>  {mesecolhido}')]
+    opa = [sg.Text(f'=== MÊS DA SORTE!!! ==>  {mesecolhido}')]
 else:
     opa = ''
 sg.theme('DarkTeal9')    #DarkAmber
