@@ -57,17 +57,16 @@ for cont in range(0,qtdeBilhetes):
     opa[cont] = [sg.Text(f'CARTELA {cont+1} :=> {numSort[cont]}')]
     cont += 1
 if opção == 'DIA DE SORTE':
-    ome = [sg.Text(f'$$$  MÊS DA SORTE  $$$ ::: ⇒ ⇒ ⇒  {mesecolhido}')]
+    ome = [sg.Text(f'$$$ :::  MÊS DA SORTE  :::  $$$  ⇒ ⇒ ⇒  {mesecolhido}')]
 else:
     ome = ''
 sg.theme('DarkTeal9')    #DarkAmber
-layout = [[sg.Text(f'===============  PARABÉNS!  ===========\n Veja abaixo suas {qtdeBilhetes} cartelas com {num} DEZENAS cada\n'
-          f'         =====  {opção}  =====  '.upper())],
+layout = [[sg.Text(f'===============  PARABÉNS!  ===========\n Veja abaixo suas  {qtdeBilhetes}  cartelas com  {num}  DEZENAS cada\n'
+          f'\n           =======  {opção}  =======  '.upper())],
           opa.values(),
           ome,
-          [sg.Text('   ')],
+          [sg.Text('    ')],
           [sg.Button('Nova Cartela'), sg.Button('Sair')]]
-
 window = sg.Window('AQUI OS SEUS NÚMEROS DA SORTE!!!', layout)
 while True:
     event, values = window.read()
