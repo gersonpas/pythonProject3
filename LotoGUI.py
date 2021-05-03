@@ -1,16 +1,21 @@
 import PySimpleGUI as sg
 from random import randint, sample,choice
 sg.theme('DarkAmber')  # Add a touch of color
-layout = [[sg.Text('Faça sua Escolha:')],
-          [sg.Text('- QUINA\n- MEGA SENA\n- DUPLA SENA\n'
-                   '- LOTOFÁCIL\n- LOTOMANIA\n- DIA DE SORTE')],
-          [sg.Text('Escolha sua Loteria e Click OK para iniciar o Programa'), sg.InputOptionMenu(['QUINA', 'MEGA SENA', 'DUPLA SENA', 'LOTOFÁCIL', 'LOTOMANIA', 'DIA DE SORTE'])],
-          [sg.Button('Ok'), sg.Button('Sair')]]
-window = sg.Window('Números da Sorte - Jogos da CEF', layout)
+layout = [[sg.Text('⇓⇓  FAÇA AQUI A SUA ESCOLHA  ⇓⇓')],
+          [sg.Text('-   QUINA\n-   MEGA SENA\n-   DUPLA SENA\n'
+                   '-   LOTOFÁCIL\n-   LOTOMANIA\n-   DIA DE SORTE')],
+          [sg.Text('  FAÇA AQUI SUA OPÇÃO     ⇒ ⇒ ⇒ '), sg.InputOptionMenu(['QUINA', 'MEGA SENA', 'DUPLA SENA',
+                    'LOTOFÁCIL', 'LOTOMANIA', 'DIA DE SORTE'])],
+          [sg.Text(' QUANTAS CARTELAS DESEJA FAZER ⇒ ⇒ ⇒'), sg.InputOptionMenu([1,2,3,4,5])],
+          [sg.Button('Ok')]]
+window = sg.Window('$ Acredite na Sua Sorte e Fique Rico $'.upper(), layout)
 while True:
     event, values = window.read()
-    if event == sg.WIN_CLOSED or event == 'Sair':  # Fecha janela se usuario clicar sair ou fechar janela.
+    if event == sg.WIN_CLOSED or event == 'Ok':  # Fecha janela se usuario clicar sair ou fechar janela.
         break
+qtdeBilhetes = int(values[1])
+if qtdeBilhetes == 5:
+    print('Ok ==> 5')
 if values[0] == 'QUINA':
     opção, init, fim, qdezInit, qdezFim = 'QUINA', 0, 80, 5, 15
 if values[0] == 'MEGA SENA':
@@ -30,31 +35,39 @@ Meses = ('JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'Maio'.upper(),
 mesecolhido = choice(Meses) # escolhe um mês dentre os meses da lista "Meses".
 #window.close()
 
-sg.theme('DarkTeal9')    #DarkAmber
+sg.theme('DarkAmber')    #DarkAmber
 layout = [[sg.Text(f' Muito bem! Você escolheu:\n\n =================== {opção} =====================\n')],
           [sg.Text(f'======= Esta Loteria opera com dezenas entre {init} e {fim} =======')],
           [sg.Text(f'Para esta Loteria Você pode fazer bilhetes de {qdezInit} até {qdezFim} dezenas ')],
           [sg.Text('Escolha aqui a qtde de Dezenas que Você quer Jogar ==> '), sg.InputOptionMenu(range(qdezInit,qdezFim+1))],
-          [sg.Button('Gerar Bilhete'), sg.Button('Sair')]]
+          [sg.Button('Gerar Bilhete')]]
 
-window = sg.Window('Números da Sorte - Jogos da CEF', layout)
+window = sg.Window('Números da Sorte - Jogos da CEF'.upper(), layout)
 while True:
     event, values = window.read()
-    if event == sg.WIN_CLOSED or event == 'Sair':  # Fecha janela se usuario clicar sair ou fechar janela.
+    if event == sg.WIN_CLOSED or event == 'Gerar Bilhete':  # Fecha janela se usuario clicar sair ou fechar janela.
         break
 num = int(values[0])
-dezenas = sorted(sample(range(init, fim), num))
+cont = 1
+numSort = []
+for cont in range(0,qtdeBilhetes):
+    dezenas = sorted(sample(range(init, fim), num))
+    numSort.append(dezenas)
+    #print(f'{cont+1} = {dezenas}')
+    print(f'{cont+1} {numSort[cont]}')
+    cont += 1
+
 if opção == 'DIA DE SORTE':
-    opa = [sg.Text(f'=== MÊS DA SORTE!!! ==>  {mesecolhido}')]
+    opa = [sg.Text(f'$$$ MÊS DA SORTE $$$ ⇒ ⇒ ⇒  {mesecolhido}')]
 else:
     opa = ''
 sg.theme('DarkTeal9')    #DarkAmber
-layout = [[sg.Text(f'=============== PARABÉNS!!!===========\n SUAS {num} DEZENAS PARA ===== {opção} ===== FORAM: ')],
+layout = [[sg.Text(f'=============== PARABÉNS!!! ===========\n SUAS {num} DEZENAS PARA ===== {opção} ===== FORAM: ')],
           [sg.Text(f'DEZENAS SORTEADAS => {dezenas}')],
           opa,
-          [sg.Button('Gerar Bilhete'), sg.Button('Sair')]]
+          [sg.Button('Nova Cartela'), sg.Button('Sair')]]
 
-window = sg.Window('Números da Sorte - Jogos da CEF', layout)
+window = sg.Window('AQUI OS SEUS NÚMEROS DA SORTE!!!', layout)
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'Sair':  # Fecha janela se usuario clicar sair ou fechar janela.
