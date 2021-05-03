@@ -6,7 +6,7 @@ layout = [[sg.Text('⇓⇓  FAÇA AQUI A SUA ESCOLHA  ⇓⇓')],
                    '-   LOTOFÁCIL\n-   LOTOMANIA\n-   DIA DE SORTE')],
           [sg.Text('  FAÇA AQUI SUA OPÇÃO     ⇒ ⇒ ⇒ '), sg.InputOptionMenu(['QUINA', 'MEGA SENA', 'DUPLA SENA',
                     'LOTOFÁCIL', 'LOTOMANIA', 'DIA DE SORTE'])],
-          [sg.Text(' QUANTAS CARTELAS DESEJA FAZER ⇒ ⇒ ⇒'), sg.InputOptionMenu([1,2,3,4,5])],
+          [sg.Text(' QUANTAS CARTELAS DESEJA FAZER     ⇒ ⇒ ⇒'), sg.InputOptionMenu([1,2,3,4,5])],
           [sg.Button('Ok')]]
 window = sg.Window('$ Acredite na Sua Sorte e Fique Rico $'.upper(), layout)
 while True:
@@ -36,10 +36,10 @@ mesecolhido = choice(Meses) # escolhe um mês dentre os meses da lista "Meses".
 #window.close()
 
 sg.theme('DarkAmber')    #DarkAmber
-layout = [[sg.Text(f' Muito bem! Você escolheu:\n\n =================== {opção} =====================\n')],
-          [sg.Text(f'======= Esta Loteria opera com dezenas entre {init} e {fim} =======')],
-          [sg.Text(f'Para esta Loteria Você pode fazer bilhetes de {qdezInit} até {qdezFim} dezenas ')],
-          [sg.Text('Escolha aqui a qtde de Dezenas que Você quer Jogar ==> '), sg.InputOptionMenu(range(qdezInit,qdezFim+1))],
+layout = [[sg.Text(f' Muito bem! Você escolheu:\n\n =================== {opção} =====================\n'.upper())],
+          [sg.Text(f'======= Esta Loteria opera com dezenas entre {init} e {fim} ======='.upper())],
+          [sg.Text(f'Para esta Loteria Você pode fazer bilhetes de {qdezInit} até {qdezFim} dezenas '.upper())],
+          [sg.Text('Escolha aqui a qtde de Dezenas que Você quer Jogar ==> '.upper()), sg.InputOptionMenu(range(qdezInit,qdezFim+1))],
           [sg.Button('Gerar Bilhete')]]
 
 window = sg.Window('Números da Sorte - Jogos da CEF'.upper(), layout)
@@ -54,18 +54,18 @@ opa = dict()
 for cont in range(0,qtdeBilhetes):
     dezenas = sorted(sample(range(init, fim), num))
     numSort.append(dezenas)
-    opa[cont] = [sg.Text(f'CARTELA {cont+1} => {numSort[cont]}')]
-    print(f'{cont} {numSort[cont]}')
+    opa[cont] = [sg.Text(f'CARTELA {cont+1} :=> {numSort[cont]}')]
     cont += 1
-print(numSort)
 if opção == 'DIA DE SORTE':
-    ome = [sg.Text(f'$$$ MÊS DA SORTE $$$ ⇒ ⇒ ⇒  {mesecolhido}')]
+    ome = [sg.Text(f'$$$  MÊS DA SORTE  $$$ ::: ⇒ ⇒ ⇒  {mesecolhido}')]
 else:
     ome = ''
 sg.theme('DarkTeal9')    #DarkAmber
-layout = [[sg.Text(f'=============== PARABÉNS!!! ===========\n SUAS {num} DEZENAS PARA ===== {opção} ===== FORAM: ')],
+layout = [[sg.Text(f'===============  PARABÉNS!  ===========\n Veja abaixo suas {qtdeBilhetes} cartelas com {num} DEZENAS cada\n'
+          f'         =====  {opção}  =====  '.upper())],
           opa.values(),
           ome,
+          [sg.Text('   ')],
           [sg.Button('Nova Cartela'), sg.Button('Sair')]]
 
 window = sg.Window('AQUI OS SEUS NÚMEROS DA SORTE!!!', layout)
