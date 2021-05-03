@@ -48,23 +48,24 @@ while True:
     if event == sg.WIN_CLOSED or event == 'Gerar Bilhete':  # Fecha janela se usuario clicar sair ou fechar janela.
         break
 num = int(values[0])
-cont = 1
-numSort = []
+cont = 0
+numSort = list()
+opa = dict()
 for cont in range(0,qtdeBilhetes):
     dezenas = sorted(sample(range(init, fim), num))
     numSort.append(dezenas)
-    #print(f'{cont+1} = {dezenas}')
-    print(f'{cont+1} {numSort[cont]}')
+    opa[cont] = [sg.Text(f'CARTELA {cont+1} => {numSort[cont]}')]
+    print(f'{cont} {numSort[cont]}')
     cont += 1
-
+print(numSort)
 if opção == 'DIA DE SORTE':
-    opa = [sg.Text(f'$$$ MÊS DA SORTE $$$ ⇒ ⇒ ⇒  {mesecolhido}')]
+    ome = [sg.Text(f'$$$ MÊS DA SORTE $$$ ⇒ ⇒ ⇒  {mesecolhido}')]
 else:
-    opa = ''
+    ome = ''
 sg.theme('DarkTeal9')    #DarkAmber
 layout = [[sg.Text(f'=============== PARABÉNS!!! ===========\n SUAS {num} DEZENAS PARA ===== {opção} ===== FORAM: ')],
-          [sg.Text(f'DEZENAS SORTEADAS => {dezenas}')],
-          opa,
+          opa.values(),
+          ome,
           [sg.Button('Nova Cartela'), sg.Button('Sair')]]
 
 window = sg.Window('AQUI OS SEUS NÚMEROS DA SORTE!!!', layout)
