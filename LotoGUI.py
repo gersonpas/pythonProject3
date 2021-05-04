@@ -18,8 +18,6 @@ if values[0] == '':
 if values[1] == '':
     values[1] = 1
 qtdeBilhetes = int(values[1])
-
-
 if values[0] == 'QUINA':
     opção, init, fim, qdezInit, qdezFim = 'QUINA', 0, 80, 5, 15
 if values[0] == 'MEGA SENA':
@@ -32,20 +30,17 @@ if values[0] == 'LOTOMANIA':
     opção, init, fim, qdezInit, qdezFim  =  'lOTOMANIA', 0, 99, 50, 50
 if values[0] == 'DIA DE SORTE':
     opção, init, fim, qdezInit, qdezFim  =  'DIA DE SORTE', 1, 30, 7, 15
-
 Meses = ('JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'Maio'.upper(),
          'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO',
              'Novembro'.upper(), 'Dezembro'.upper())
 mesecolhido = choice(Meses) # escolhe um mês dentre os meses da lista "Meses".
 window.close()
-
 sg.theme('DarkAmber')
 layout = [[sg.Text(f' Muito bem! Você escolheu:\n\n =================== {opção} =====================\n'.upper())],
           [sg.Text(f'======= Esta Loteria opera com dezenas entre {init} e {fim} ======='.upper())],
           [sg.Text(f'Para esta Loteria Você pode fazer bilhetes de {qdezInit} até {qdezFim} dezenas '.upper())],
           [sg.Text('Escolha aqui a qtde de Dezenas que Você quer Jogar ==> '.upper()), sg.InputOptionMenu(range(qdezInit,qdezFim+1))],
           [sg.Button('Gerar Bilhete')]]
-
 window = sg.Window('Números da Sorte - Jogos da CEF'.upper(), layout)
 while True:
     event, values = window.read()
@@ -83,12 +78,11 @@ while True:
         break
     if event == 'Sobre o Programa':
         break
-
 #window.close()
 sg.theme('DarkTeal9')    #DarkAmber
 layout3 = [[sg.Text(" gerson pereira de araujo sobrinho".upper())],
            [sg.Text("Programador Java/Python")],
-           [sg.Text('Programa Criando em Python 3.9 = V1.1 -  03/05/2021\nContatos: sobrinho.gerson@yahoo.com/')],
+           [sg.Text('Programa Criando em Python 3.8 = V1.1 -  03/05/2021\nContatos: sobrinho.gerson@yahoo.com/')],
            [sg.Text("https://github.com/gersonpas/")],
            [sg.Button('Sair')]]
 window = sg.Window(' =======  sobre o autor  ======'.upper(), layout3)
@@ -96,6 +90,3 @@ while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'Sair':  # Fecha janela se usuario clicar sair ou fechar janela.
         break
-
-
-
