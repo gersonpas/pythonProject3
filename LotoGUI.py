@@ -11,7 +11,7 @@ layout = [[sg.Text('⇓⇓  FAÇA AQUI A SUA ESCOLHA  ⇓⇓')],
 window = sg.Window('$ Acredite na Sua Sorte e Fique Rico $'.upper(), layout)
 while True:
     event, values = window.read()
-    if event == sg.WIN_CLOSED or event == 'Ok':  # Fecha janela se usuario clicar sair ou fechar janela.
+    if event == sg.WIN_CLOSED or event == 'Ok':
         break
 if values[0] == '':
     values[0] = 'QUINA'
