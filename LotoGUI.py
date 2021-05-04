@@ -13,9 +13,13 @@ while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'Ok':  # Fecha janela se usuario clicar sair ou fechar janela.
         break
+if values[0] == '':
+    values[0] = 'QUINA'
+if values[1] == '':
+    values[1] = 1
 qtdeBilhetes = int(values[1])
-if qtdeBilhetes == 5:
-    print('Ok ==> 5')
+
+
 if values[0] == 'QUINA':
     opção, init, fim, qdezInit, qdezFim = 'QUINA', 0, 80, 5, 15
 if values[0] == 'MEGA SENA':
@@ -47,6 +51,8 @@ while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'Gerar Bilhete':  # Fecha janela se usuario clicar sair ou fechar janela.
         break
+if values[0] == '':
+    values[0] = qdezInit
 num = int(values[0])
 cont = 0
 numSort = list()
