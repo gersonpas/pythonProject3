@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 from random import randint, sample,choice
-sg.theme('DarkAmber')  # Add a touch of color
+sg.theme('DarkAmber')
 layout = [[sg.Text('⇓⇓  FAÇA AQUI A SUA ESCOLHA  ⇓⇓')],
           [sg.Text('-   QUINA\n-   MEGA SENA\n-   DUPLA SENA\n'
                    '-   LOTOFÁCIL\n-   LOTOMANIA\n-   DIA DE SORTE')],
@@ -37,9 +37,9 @@ Meses = ('JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'Maio'.upper(),
          'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO',
              'Novembro'.upper(), 'Dezembro'.upper())
 mesecolhido = choice(Meses) # escolhe um mês dentre os meses da lista "Meses".
-#window.close()
+window.close()
 
-sg.theme('DarkAmber')    #DarkAmber
+sg.theme('DarkAmber')
 layout = [[sg.Text(f' Muito bem! Você escolheu:\n\n =================== {opção} =====================\n'.upper())],
           [sg.Text(f'======= Esta Loteria opera com dezenas entre {init} e {fim} ======='.upper())],
           [sg.Text(f'Para esta Loteria Você pode fazer bilhetes de {qdezInit} até {qdezFim} dezenas '.upper())],
@@ -66,15 +66,36 @@ if opção == 'DIA DE SORTE':
     ome = [sg.Text(f'$$$ :::  MÊS DA SORTE  :::  $$$  ⇒ ⇒ ⇒  {mesecolhido}')]
 else:
     ome = ''
+window.close()
 sg.theme('DarkTeal9')    #DarkAmber
-layout = [[sg.Text(f'===============  PARABÉNS!  ===========\n Veja abaixo suas  {qtdeBilhetes}  cartelas com  {num}  DEZENAS cada\n'
+layout2 = [[sg.Text(f'===============  PARABÉNS!  ===========\n Veja abaixo suas  {qtdeBilhetes}  cartelas com  {num}  DEZENAS cada\n'
           f'\n           =======  {opção}  =======  '.upper())],
           opa.values(),
           ome,
           [sg.Text('    ')],
-          [sg.Button('Nova Cartela'), sg.Button('Sair')]]
-window = sg.Window('AQUI OS SEUS NÚMEROS DA SORTE!!!', layout)
+          [sg.Button('Nova Cartela'),sg.Button('Sobre o Programa'), sg.Button('Sair')]]
+window = sg.Window('AQUI OS SEUS NÚMEROS DA SORTE!!!', layout2)
+while True:
+    event, values = window.read()
+    if event == 'Nova Cartela':
+        print('Próxima Cartela')
+    if event == sg.WIN_CLOSED or event == 'Sair':  # Fecha janela se usuario clicar sair ou fechar janela.
+        break
+    if event == 'Sobre o Programa':
+        break
+
+#window.close()
+sg.theme('DarkTeal9')    #DarkAmber
+layout3 = [[sg.Text(" gerson pereira de araujo sobrinho".upper())],
+           [sg.Text("Programador Java/Python")],
+           [sg.Text('Programa Criando em Python 3.9 = V1.1 -  03/05/2021\nContatos: sobrinho.gerson@yahoo.com/')],
+           [sg.Text("https://github.com/gersonpas/")],
+           [sg.Button('Sair')]]
+window = sg.Window(' =======  sobre o autor  ======'.upper(), layout3)
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'Sair':  # Fecha janela se usuario clicar sair ou fechar janela.
         break
+
+
+
