@@ -1,34 +1,47 @@
 import PySimpleGUI as sg
 from random import randint, sample,choice
-sg.theme('DarkAmber')
-layout = [[sg.Text('⇓⇓  FAÇA AQUI A SUA ESCOLHA  ⇓⇓')],
+#sg.theme('DarkAmber')
+sg.ChangeLookAndFeel('DarkAmber')
+
+# ------ Menu Definition ------ #
+menu_def = [['&File', ['&Open', '&Save', 'E&xit', 'Properties']],
+            ['&Edit', ['Paste', ['Special', 'Normal', ], 'Undo'], ],
+            ['&Help', '&About...'], ]
+
+
+layout = [[sg.Menu(menu_def, tearoff=True)],
+          #[sg.Text('⇓⇓  FAÇA AQUI A SUA ESCOLHA  ⇓⇓')],
+[sg.Text('⇓⇓  FAÇA AQUI A SUA ESCOLHA  ⇓⇓', size=(30, 1), justification='center', font=("Helvetica", 16), relief=sg.RELIEF_RIDGE)],
           [sg.Text('-   QUINA\n-   MEGA SENA\n-   DUPLA SENA\n'
                    '-   LOTOFÁCIL\n-   LOTOMANIA\n-   DIA DE SORTE')],
-          [sg.Text('  FAÇA AQUI SUA OPÇÃO     ⇒ ⇒ ⇒ '), sg.InputOptionMenu(['QUINA', 'MEGA SENA', 'DUPLA SENA',
-                    'LOTOFÁCIL', 'LOTOMANIA', 'DIA DE SORTE'])],
-          [sg.Text(' QUANTAS CARTELAS DESEJA FAZER     ⇒ ⇒ ⇒'), sg.InputOptionMenu([1,2,3,4,5])],
+          [sg.Text('  FAÇA AQUI SUA OPÇÃO     ⇒ ⇒ ⇒ '),
+
+           sg.InputCombo(['QUINA', 'MEGA SENA', 'DUPLA SENA',
+                    'LOTOFÁCIL', 'LOTOMANIA', 'DIA DE SORTE'], size=(15,1))],
+
+          [sg.Text(' QUANTAS CARTELAS DESEJA FAZER     ⇒ ⇒ ⇒'), sg.InputCombo([1,2,3,4,5])],
           [sg.Button('Ok')]]
 window = sg.Window('$ Acredite na Sua Sorte e Fique Rico $'.upper(), layout)
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'Ok':
         break
-if values[0] == '':
-    values[0] = 'QUINA'
 if values[1] == '':
-    values[1] = 1
-qtdeBilhetes = int(values[1])
-if values[0] == 'QUINA':
+    values[1] = 'QUINA'
+if values[2] == '':
+    values[2] = 1
+qtdeBilhetes = int(values[2])
+if values[1] == 'QUINA':
     opção, init, fim, qdezInit, qdezFim = 'QUINA', 0, 80, 5, 15
-if values[0] == 'MEGA SENA':
+if values[1] == 'MEGA SENA':
     opção, init, fim, qdezInit, qdezFim = 'MEGA SENA', 1, 60, 6, 15
-if values[0] == 'DUPLA SENA':
+if values[1] == 'DUPLA SENA':
     opção, init, fim, qdezInit, qdezFim =   'DUPLA SENA', 1, 50, 6, 15
-if values[0] == 'LOTOFÁCIL':
+if values[1] == 'LOTOFÁCIL':
     opção, init, fim, qdezInit, qdezFim =   'LOTOFÁCIL', 1, 25, 15, 20
-if values[0] == 'LOTOMANIA':
+if values[1] == 'LOTOMANIA':
     opção, init, fim, qdezInit, qdezFim  =  'lOTOMANIA', 0, 99, 50, 50
-if values[0] == 'DIA DE SORTE':
+if values[1] == 'DIA DE SORTE':
     opção, init, fim, qdezInit, qdezFim  =  'DIA DE SORTE', 1, 30, 7, 15
 Meses = ('JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'Maio'.upper(),
          'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO',
@@ -69,9 +82,9 @@ layout2 = [[sg.Text(f'===============  PARABÉNS!  ===========\n Veja abaixo sua
           ome,
           [sg.Text('    ')],
           [sg.Button('Nova Cartela'),sg.Button('Sobre o Programa'), sg.Button('Sair')]]
-window = sg.Window('AQUI OS SEUS NÚMEROS DA SORTE!!!', layout2)
+window2 = sg.Window('AQUI OS SEUS NÚMEROS DA SORTE!!!', layout2)
 while True:
-    event, values = window.read()
+    event, values = window2.read()
     if event == 'Nova Cartela':
         print('Próxima Cartela')
     if event == sg.WIN_CLOSED or event == 'Sair':  # Fecha janela se usuario clicar sair ou fechar janela.
@@ -85,8 +98,10 @@ layout3 = [[sg.Text(" gerson pereira de araujo sobrinho".upper())],
            [sg.Text('Programa Criando em Python 3.8 = V1.1 -  03/05/2021\nContatos: sobrinho.gerson@yahoo.com/')],
            [sg.Text("https://github.com/gersonpas/")],
            [sg.Button('Sair')]]
-window = sg.Window(' =======  sobre o autor  ======'.upper(), layout3)
+window3 = sg.Window(' =======  sobre o autor  ======'.upper(), layout3)
 while True:
-    event, values = window.read()
-    if event == sg.WIN_CLOSED or event == 'Sair':  # Fecha janela se usuario clicar sair ou fechar janela.
-        break
+    event, values = window3.read()
+    if event == sg.WIN_CLOSED or event == 'Sair':
+         window3.close()
+         break
+
