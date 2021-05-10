@@ -53,7 +53,8 @@ layout = [[sg.Text(f' Muito bem! Você escolheu:\n\n =================== {opçã
           [sg.Text(f'======= Esta Loteria opera com dezenas entre {init} e {fim} ======='.upper())],
           [sg.Text(f'Para esta Loteria Você pode fazer bilhetes de {qdezInit} até {qdezFim} dezenas '.upper())],
           [sg.Text('Escolha aqui a qtde de Dezenas que Você quer Jogar ==> '.upper()), sg.InputOptionMenu(range(qdezInit,qdezFim+1))],
-          [sg.Button('Gerar Bilhete')]]
+          [sg.Button('Gerar Bilhete')],
+          [sg.Menu(menu_def, tearoff=True)]]
 window = sg.Window('Números da Sorte - Jogos da CEF'.upper(), layout)
 while True:
     event, values = window.read()
@@ -81,7 +82,8 @@ layout2 = [[sg.Text(f'===============  PARABÉNS!  ===========\n Veja abaixo sua
           opa.values(),
           ome,
           [sg.Text('    ')],
-          [sg.Button('Nova Cartela'),sg.Button('Sobre o Programa'), sg.Button('Sair')]]
+          [sg.Button('Nova Cartela'),sg.Button('Sobre o Programa'), sg.Button('Sair')],
+           [sg.Menu(menu_def, tearoff=True)]]
 window2 = sg.Window('AQUI OS SEUS NÚMEROS DA SORTE!!!', layout2)
 while True:
     event, values = window2.read()
@@ -97,7 +99,8 @@ layout3 = [[sg.Text(" gerson pereira de araujo sobrinho".upper())],
            [sg.Text("Programador Java/Python")],
            [sg.Text('Programa Criando em Python 3.8 = V1.1 -  03/05/2021\nContatos: sobrinho.gerson@yahoo.com/')],
            [sg.Text("https://github.com/gersonpas/")],
-           [sg.Button('Sair')]]
+           [sg.Button('Sair')],
+           [sg.Menu(menu_def, tearoff=True)]]
 window3 = sg.Window(' =======  sobre o autor  ======'.upper(), layout3)
 while True:
     event, values = window3.read()
